@@ -35,6 +35,15 @@ favoriteRoutes.route('/:id').get(function(req, res) {
     });
 });
 
+favoriteRoutes.route('/get_by/:episode_id').get(function(req, res) {
+    let episode_id = req.params.episode_id;
+    console.debug("test: "+req.params.episode_id);
+    Favorites.findByEpisodeId(episode_id, function(err, favorite) {
+        console.debug("favorite: "+JSON.stringify(favorite));
+        res.json(favorite);
+    });
+});
+
 favoriteRoutes.route('/update/:id').post(function(req, res) {
     Favorites.findById(req.params.id, function(err, favorite) {
         if (!favorite)
@@ -57,7 +66,7 @@ favoriteRoutes.route('/add').post(function(req, res) {
     let favorite = new Favorites(req.body);
     favorite.save()
         .then(favorite => {
-            res.status(200).json({'favorite': 'favorite added successfully'});
+            res.status(200).json({'message': 'favorite added successfully'});
         })
         .catch(err => {
             res.status(400).send('adding new favorite failed');

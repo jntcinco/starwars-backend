@@ -10,4 +10,8 @@ let Favorites = new Schema({
     }
 });
 
+Favorites.statics.findByEpisodeId = function findByEpisodeId (param, callbacks) {
+  return this.model('Favorites').find({ episode_id: param }, callbacks);
+};
+
 module.exports = mongoose.model('Favorites', Favorites);
