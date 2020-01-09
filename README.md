@@ -6,5 +6,11 @@ cors: CORS is a node.js package for providing an Express middleware that can be 
 mongoose: A Node.js framework which lets us access MongoDB in an object-oriented way.
 nodemon: Nodemon is a utility that will monitor for any changes in your source and automatically restart your server. We’ll use nodemon when running our Node.js server in the next steps.
 
+## Add npm dependencies to package.json
+npm install express body-parser cors mongoose
+
+## install global package
+npm install -g nodemon
+
 ## Start nodemon
 nodemon server
